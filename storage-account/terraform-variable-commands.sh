@@ -1,0 +1,1 @@
+terraform apply -var "storageAccountName=skylinesstrg01" -var "resourceGroupName=Dev2" -var "location=eastus"
