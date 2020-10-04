@@ -1,7 +1,7 @@
 function newAppRegistration {
     [cmdletbinding(ConfirmImpact = 'low')]
     param(
-        [string]$name = "cloudskills"
+        [string]$name = "skylines"
     )
     
     # Create App Registration

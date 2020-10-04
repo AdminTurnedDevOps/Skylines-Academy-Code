@@ -1,6 +1,7 @@
 provider "azurerm" {
-    version = "1.38.0"
+    version = "2.0.0"
     subscription_id = var.subscriptionID
+    features {}
 }
 
 resource "azurerm_network_security_group" "skylinesSG" {
@@ -44,7 +45,7 @@ resource "azurerm_network_security_rule" "Port22" {
   access                      = "Allow"
   protocol                    = "Tcp"
   source_port_range           = "*"
-  destination_port_range      = "443"
+  destination_port_range      = "22"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
   resource_group_name         = azurerm_network_security_group.skylinesSG.resource_group_name
@@ -95,6 +96,6 @@ resource "azurerm_network_interface" "VMInterface" {
   }
 
   tags = {
-    environment = "staging"
+    environment = "Dev"
   }
 }

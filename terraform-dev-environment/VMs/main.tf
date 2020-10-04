@@ -1,6 +1,7 @@
 provider "azurerm" {
-  version         = "1.38.0"
+  version         = "2.0.0"
   subscription_id = var.subscriptionID
+  features {}
 }
 
 resource "azurerm_virtual_machine" "SkylinesDevVM" {
@@ -37,6 +38,6 @@ resource "azurerm_virtual_machine" "SkylinesDevVM" {
     }
   }
   tags = {
-    environment = "staging"
+    environment = "Dev"
   }
 }
