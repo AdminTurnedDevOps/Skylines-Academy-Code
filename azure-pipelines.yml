@@ -15,8 +15,6 @@ stages:
   jobs:
   - deployment: Deploy
     displayName: Deploy
-    pool:
-      vmImage: $(vmImageName)
     environment: 'AdminTurnedDevOpsSkylinesAcademyCode-1867.default'
     strategy:
       runOnce:
