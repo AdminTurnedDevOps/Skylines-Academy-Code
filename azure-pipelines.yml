@@ -4,9 +4,6 @@ trigger:
 resources:
 - repo: self
 
-  vmImageName: 'ubuntu-latest'
-  
-
 stages:
 - stage: Deploy
   displayName: Deploy stage
