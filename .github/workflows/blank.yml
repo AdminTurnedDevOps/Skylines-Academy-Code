@@ -1,0 +1,28 @@
+name: Deploy to AKS
+
+env:
+  k8sclustername: skylines92
+  resourceGroupName: skylines-rg
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      
+    - uses: Azure/aks-set-context@v1
+      with:
+        creds: '${{ secrets.AZURE_CREDENTIALS }}'
+        cluster-name: '${{ env.k8sclustername }}'
+        resource-group: '${{ env.resourceGroupName }}'
+
+    - uses: Azure/k8s-deploy@v1
+      with:
+        manifests: |
+          KubernetesManifest/nginx.yml
