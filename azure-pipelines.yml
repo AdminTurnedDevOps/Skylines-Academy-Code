@@ -1,6 +1,9 @@
 trigger:
 - master
 
+pool:
+  vmImage: 'ubuntu-latest'
+
 resources:
 - repo: self
 
@@ -21,4 +24,4 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                $(Pipeline.Workspace)/KubernetesManifest/nginx.yml
+                KubernetesManifest/nginx.yml
