@@ -18,10 +18,21 @@ stages:
     strategy:
       runOnce:
         deploy:
-          steps:             
+          steps:
+          - task: CopyFiles@2
+            inputs:
+              SourceFolder: 'KubernetesManifest'
+              Contents: '**'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+          
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+              ArtifactName: 'drop'
+            
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
             inputs:
               action: deploy
               manifests: |
-                KubernetesManifest/nginx.yml
+                $(Build.ArtifactStagingDirectory)/KubernetesManifest/nginx.yml
