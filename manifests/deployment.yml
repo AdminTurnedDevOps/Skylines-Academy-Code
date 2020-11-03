@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: adminturneddevopsskylinesacademycode 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adminturneddevopsskylinesacademycode
+  template:
+    metadata:
+      labels:
+        app: adminturneddevopsskylinesacademycode 
+    spec:
+      containers:
+        - name: adminturneddevopsskylinesacademycode 
+          image: skylinesacr92.azurecr.io/adminturneddevopsskylinesacademycode
+          ports:
+          - containerPort: 808
